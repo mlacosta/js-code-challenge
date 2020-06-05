@@ -28,6 +28,23 @@ const pAquorFactory = (number,dnaBase) =>{
         get num(){
             return this._specimenNum;
         },
+        coincidences(array1,array2){
+            let counter = 0;
+            if (array1.length !== array2.length){
+                throw new Error('array lengths must coincide!'); 
+            }
+
+            const len = array1.length;
+
+            for (let i=0;i<len;i++){
+                if (array1[i] === array2[i]){
+                    counter++;
+                }
+            }
+
+            return counter;
+
+        },
         mutate(){
             const dnaBases = ['A', 'T', 'C', 'G'];
             const len = this.dna.length;
@@ -44,7 +61,9 @@ const pAquorFactory = (number,dnaBase) =>{
 
         },
         compareDNA(pAequor){
-            console.log(`specimen #${this.num} and specimen #${pAequor.num} have 25% DNA in common`);
+            const howMany = this.coincidences(this.dna,pAequor.dna);
+            percentage = (howMany/(this.dna.length)*100.0).toFixed(4);
+            console.log(`specimen #${this.num} and specimen #${pAequor.num} have ${percentage}% DNA in common`);
 
         }
     }
