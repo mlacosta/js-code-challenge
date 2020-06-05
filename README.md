@@ -1,4 +1,4 @@
-#Codecademy challenge "Mysterious Organism"
+# Codecademy challenge "Mysterious Organism"
 
 Here's my solution to codecademy's challenge on javascript.
 
