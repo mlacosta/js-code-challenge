@@ -90,6 +90,26 @@ const pAquorFactory = (number,dnaBase) =>{
             }else{
                 return false;
             }
+        },
+        complementStrand(){
+            const compDNA = [];
+            this.dna.forEach(element =>{
+                switch (element){
+                    case 'A':
+                        compDNA.push('T');
+                        break;
+                    case 'C':
+                        compDNA.push('G');
+                        break;
+                    case 'T':
+                        compDNA.push('A');
+                        break;
+                    case 'G':
+                        compDNA.push('C');
+                        break;
+                }
+            })
+            return compDNA;
         }
     }
 
@@ -110,3 +130,7 @@ for (let i=0;i<30;i++){
     population.push(pAquorFactory(i,mockUpStrand()));
 }
 
+//example of usage
+
+console.log(population[20].dna)
+console.log(population[20].complementStrand())
