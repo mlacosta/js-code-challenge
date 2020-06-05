@@ -65,6 +65,31 @@ const pAquorFactory = (number,dnaBase) =>{
             percentage = (howMany/(this.dna.length)*100.0).toFixed(4);
             console.log(`specimen #${this.num} and specimen #${pAequor.num} have ${percentage}% DNA in common`);
 
+        },
+        willLikelySurvive(){
+            let countC = 0;
+            let countG = 0;
+            const len = this.dna.length;
+
+            this.dna.forEach(element =>{
+                if (element === 'C'){
+                    countC++;
+                }else if(element === 'G'){
+                    countG++;
+                }
+            })
+
+            probC = countC/len*1.0;
+            probG = countG/len*1.0;
+            /*console.log(`DNA: ${this.dna}`)
+            console.log(`C:${probC}`);
+            console.log(`G:${probG}`);*/
+            console.log(`prob: ${probC+probG}`)
+            if (probC + probG > 0.6){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 
@@ -75,3 +100,4 @@ const specimen = pAquorFactory(1524,mockUpStrand());
 const anotherOne = pAquorFactory(2356,mockUpStrand());
 
 specimen.compareDNA(anotherOne);
+console.log(specimen.willLikelySurvive());
