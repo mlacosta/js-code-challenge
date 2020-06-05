@@ -83,8 +83,8 @@ const pAquorFactory = (number,dnaBase) =>{
             probG = countG/len*1.0;
             /*console.log(`DNA: ${this.dna}`)
             console.log(`C:${probC}`);
-            console.log(`G:${probG}`);*/
-            console.log(`prob: ${probC+probG}`)
+            console.log(`G:${probG}`);
+            console.log(`prob: ${probC+probG}`)*/
             if (probC + probG > 0.6){
                 return true;
             }else{
@@ -101,3 +101,12 @@ const anotherOne = pAquorFactory(2356,mockUpStrand());
 
 specimen.compareDNA(anotherOne);
 console.log(specimen.willLikelySurvive());
+
+//I will create 30 specimens using the factory function
+
+const population = [];
+
+for (let i=0;i<30;i++){
+    population.push(pAquorFactory(i,mockUpStrand()));
+}
+
