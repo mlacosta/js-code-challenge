@@ -24,17 +24,20 @@ const pAquorFactory = (number,dnaBase) =>{
         },
         set dna(dnaIn){
             this._dna = dnaIn;
-        }
+        },
         mutate(){
             const dnaBases = ['A', 'T', 'C', 'G'];
             const len = this.dna.length;
             const randInx = Math.floor(Math.random() * len);
             const base = this.dna[randInx]; 
+            //console.log(`original base: ${this.dna}`);
             const mutatedBase = dnaBases.filter(b => b !== base);
-            console.log('selected base: '+base)
-            console.log('remaining bases: '+mutatedBase);
+            //console.log('selected base: '+base)
+            //console.log('remaining bases: '+mutatedBase);
             const ind = Math.floor(Math.random() * 3);
-            this.dna = 
+            this.dna[randInx] = dnaBases[ind];
+            //console.log(`mutated base: ${this.dna}`)
+            return this.dna
 
         }
     }
