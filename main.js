@@ -25,6 +25,9 @@ const pAquorFactory = (number,dnaBase) =>{
         set dna(dnaIn){
             this._dna = dnaIn;
         },
+        get num(){
+            return this._specimenNum;
+        },
         mutate(){
             const dnaBases = ['A', 'T', 'C', 'G'];
             const len = this.dna.length;
@@ -39,6 +42,10 @@ const pAquorFactory = (number,dnaBase) =>{
             //console.log(`mutated base: ${this.dna}`)
             return this.dna
 
+        },
+        compareDNA(pAequor){
+            console.log(`specimen #${this.num} and specimen #${pAequor.num} have 25% DNA in common`);
+
         }
     }
 
@@ -46,5 +53,6 @@ const pAquorFactory = (number,dnaBase) =>{
 
 
 const specimen = pAquorFactory(1524,mockUpStrand());
+const anotherOne = pAquorFactory(2356,mockUpStrand());
 
-specimen.mutate()
+specimen.compareDNA(anotherOne);
